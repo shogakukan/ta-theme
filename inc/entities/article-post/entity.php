@@ -146,5 +146,22 @@ return array(
         //         ),
         //     ),
         // ),
+        'ta_article_video' => array(
+            'settings'  => array(
+                'title'             => __('Video', 'ta-genosha'),
+                'context'           => 'side',
+                'priority'          => 'high',
+                'classes'           => array('ta-metabox'),
+            ),
+            'input'  => array(
+                'controls'        => array(
+                    'text'   => array(
+                        'label'             => __('Código de YouTube', 'ta-genosha'),
+                        'description'       => __('Pegar la dirección URL entera del video', 'ta-genosha'),
+                        'input_type'            => 'text',
+                    ),
+                ),
+            ),
+        ),
     ),
 );
