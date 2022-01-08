@@ -500,6 +500,11 @@ class Widgets_Theme_TA
     }
 }
 
+// only for dev use
+function ampforwp_is_amp_endpoint(){
+    return false;
+}
+
 function widgets_ta()
 {
     return new Widgets_Theme_TA();
