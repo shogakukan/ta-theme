@@ -32,6 +32,7 @@ class TA_Article_Data extends Data_Manager{
         'sister_article'        => null,
         'micrositio'            => null,
         'participation'         => null,
+        'special_format'        => '',
         'video'                 => '',
     );
 

@@ -146,6 +146,24 @@ return array(
         //         ),
         //     ),
         // ),
+        'ta_article_special_format' => array(
+            'settings'  => array(
+                'title'             => __('Formato especial', 'ta-genosha'),
+                'context'           => 'side',
+                'priority'          => 'high',
+                'classes'           => array('ta-metabox'),
+            ),
+            'input'  => array(
+                'controls'        => array(
+                    'text'   => array(
+                        //'label'             => __('Dejar vacío si es una nota normal', 'ta-genosha'),
+                        'description'    => __('Dejar vacío si es una nota normal', 'ta-genosha'),
+                        'input_type'        => 'select',
+                        'choices'            => array('audiovisual' => 'Audiovisual'/*, 'fotogaleria' => 'Fotogalería'*/)     
+                    ),
+                ),
+            ),
+        ),
         'ta_article_video' => array(
             'settings'  => array(
                 'title'             => __('Video', 'ta-genosha'),

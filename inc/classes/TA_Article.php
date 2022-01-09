@@ -257,4 +257,12 @@ class TA_Article extends TA_Article_Data{
         }
         return $video_code;
     }
+
+    /**
+    *   @return string
+    */
+
+    public function get_special_format(){
+        return get_post_meta($this->post->ID, 'ta_article_special_format', true);
+    }
 }
