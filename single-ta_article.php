@@ -9,7 +9,7 @@ $article_part_slug = $article->micrositio ? 'special_article' : 'article';
 if ($article->micrositio) {
   $article_part_slug = 'special_article';
 } elseif ($article->special_format) {
-  $article_part_slug = 'audiovisual_article'; //$article->special_format . '_article';
+  $article_part_slug = $article->special_format . '_article';
 } else {
   $article_part_slug = 'article';
 }
