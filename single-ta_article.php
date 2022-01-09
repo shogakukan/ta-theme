@@ -5,7 +5,7 @@
 */
 $article = TA_Article_Factory::get_article($post);
 $header_slug = $article->micrositio ? 'micrositio' : '';
-$article_part_slug = $article->micrositio ? 'special_article' : 'article';
+//$article_part_slug = $article->micrositio ? 'special_article' : 'article';
 if ($article->micrositio) {
   $article_part_slug = 'special_article';
 } elseif ($article->special_format) {
