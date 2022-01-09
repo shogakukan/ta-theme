@@ -15,15 +15,11 @@ $preview_class = esc_attr($preview_class);
     ?>
 >
     <?php if ($article->video) : ?>
-        <div class="img-container">
-            <iframe id="article-video-<?php echo esc_html($article->get_video()); ?>" width="100%" height="auto" src="https://www.youtube.com/embed/<?php echo esc_html($article->get_video()); ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="<?php echo esc_attr($thumb_cont_class); ?>">
+            <div class="img-container video">
+                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/<?php echo esc_html($article->get_video()); ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>        
         </div>
-        <script>
-        window.onload = function(){
-            let videoFrame = document.getElementById('article-video-<?php echo esc_html($article->get_video()); ?>');
-            videoFrame.height = videoFrame.scrollWidth * 2 / 3;
-        }
-        </script>
     <?php elseif( $thumbnail_url ): ?>
     <div class="<?php echo esc_attr($thumb_cont_class); ?>">
         <a data-url href="<?php echo esc_attr($url); ?>">

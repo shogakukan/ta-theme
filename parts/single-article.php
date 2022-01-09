@@ -47,13 +47,9 @@ $authors = $article->authors;
                             </div>
                         </div>
                         <?php if ($article->video) : ?>
-                        <div class="img-container mt-3">
-                        <iframe id="article-video" width="100%" height="auto" src="https://www.youtube.com/embed/<?php echo esc_html($article->get_video()); ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div class="img-container video mt-3">
+                            <iframe id="article-video" width="100%" height="100%" src="https://www.youtube.com/embed/<?php echo esc_html($article->get_video()); ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
-                        <script>
-                        let videoFrame = document.getElementById('article-video');
-                        videoFrame.height = videoFrame.scrollWidth * 0.5625;
-                        </script>
                         <?php elseif( $thumbnail ): ?>
                         <div class="img-container mt-3">
                             <div class="img-wrapper" id="article-main-image">
