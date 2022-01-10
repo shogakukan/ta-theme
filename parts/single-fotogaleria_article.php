@@ -54,7 +54,7 @@ if(!$article)
                         <?php foreach ($article->gallery as $photo) : ?>
                             <div class="img-container mt-3">
                                 <div class="img-wrapper" id="article-main-image">
-                                    <img src="<?php echo esc_attr($photo['url']); ?>" alt="" class="img-fluid w-100" />
+                                    <img src="<?php echo esc_attr($photo['url']); ?>" alt="" class="img-fluid w-100" loading="lazy"/>
                                 </div>
                                 <?php get_template_part('parts/image', 'copyright', array('photographer' => $photo['author'])); ?>
                                 <?php if($photo['caption']): ?>

@@ -29,7 +29,11 @@ $sponsor = $article->micrositio->get_sponsor();
                 <p class="date mb-0"><?php echo esc_html($article->get_date_day('d/m/Y')); ?></p>
                 <?php get_template_part( 'parts/article', 'social_buttons', array( 'class' => 'text-right mt-3' ) ); ?>
             </div>
-            <?php if( !$article->thumbnail_common['is_default'] ): ?>
+            <?php if ($article->video) : ?>
+                <div class="img-container video mt-3">
+                    <iframe id="article-video" width="100%" height="100%" src="https://www.youtube.com/embed/<?php echo esc_html($article->get_video()); ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            <?php elseif( !$article->thumbnail_common['is_default'] ): ?>
             <div class="img-container mt-3">
                 <div class="img-wrapper" id="article-main-image">
                     <img src="<?php echo esc_attr($article->thumbnail_common['url']); ?>" alt="" class="img-fluid w-100" />
@@ -47,6 +51,23 @@ $sponsor = $article->micrositio->get_sponsor();
 
             <div class="article-body mt-3">
                 <div class="art-column-w-xpadding">
+                    <?php if ($article->special_format == 'fotogaleria' && $article->gallery) : ?>
+                        <div class="galeria-fotos">
+                        <?php foreach ($article->gallery as $photo) : ?>
+                            <div class="img-container mt-3">
+                                <div class="img-wrapper" id="article-main-image">
+                                    <img src="<?php echo esc_attr($photo['url']); ?>" alt="" class="img-fluid w-100" loading="lazy"/>
+                                </div>
+                                <?php get_template_part('parts/image', 'copyright', array('photographer' => $photo['author'])); ?>
+                                <?php if($photo['caption']): ?>
+                                <div class="bajada mt-3">
+                                    <p><?php echo esc_html($photo['caption']); ?></p>
+                                </div>
+                                <?php endif; ?>
+                            </div>
+                        <?php endforeach ?>
+                    </div>
+                    <?php endif; ?>
                     <?php echo apply_filters( 'the_content', $article->content ); ?>
                 </div>
             </div>

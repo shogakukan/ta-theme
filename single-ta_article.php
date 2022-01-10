@@ -8,7 +8,7 @@ $header_slug = $article->micrositio ? 'micrositio' : '';
 //$article_part_slug = $article->micrositio ? 'special_article' : 'article';
 if ($article->micrositio) {
   $article_part_slug = 'special_article';
-} elseif ($article->special_format) {
+} elseif (($article->special_format == 'fotogalería' && $article->gallery) || ($article->special_format && $article->special_format != 'fotogalería')) {
   $article_part_slug = $article->special_format . '_article';
 } else {
   $article_part_slug = 'article';
