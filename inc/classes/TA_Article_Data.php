@@ -34,6 +34,7 @@ class TA_Article_Data extends Data_Manager{
         'participation'         => null,
         'special_format'        => '',
         'video'                 => '',
+        'gallery'               => null,
     );
 
     public function get_thumbnail($variation = 'common', $size = 'full'){

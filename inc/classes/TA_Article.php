@@ -258,6 +258,29 @@ class TA_Article extends TA_Article_Data{
         return $video_code;
     }
 
+    public function get_gallery(){
+        $gallery_ids = get_post_meta($this->post->ID, 'ta_article_gallery', true);
+        $result = [];
+        foreach ($gallery_ids as $photo_id) {
+            $attachment = get_post( $photo_id );
+
+            if( $attachment ){
+                $alt = get_post_meta( $attachment->ID, '_wp_attachment_image_alt', true );
+                $photo_data = array(
+                    'attachment'    => $attachment,
+                    'url'           => wp_get_attachment_image_url($attachment->ID, 'full', false),
+                    'caption'       => has_excerpt($attachment) ? get_the_excerpt($attachment) : '',
+                    'author'        => ta_get_attachment_photographer($attachment->ID),
+                    'position'      => ta_get_attachment_positions($attachment->ID),
+                    'alt'           => $alt ? $alt : '',
+                    'is_default'    => false,
+                );
+                array_push($result, $photo_data);
+            }
+        }
+
+        return $result;
+    }
     /**
     *   @return string
     */
