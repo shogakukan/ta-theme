@@ -146,10 +146,18 @@ class Beneficios_Assets
                     'compare' => 'LIKE'
                 ],
                 [
-                    'key' => '_finish',
-                    'value' => date('Y-m-d'),
-                    'compare' => '>=',
-                    'type' => 'DATE'
+                    'relation' => 'OR',
+                    [
+                        'key' => '_finish',
+                        'value' => date('Y-m-d'),
+                        'compare' => '>=',
+                        'type' => 'DATE'
+                    ],
+                    [
+                        'key' => '_finish',
+                        'value' => '',
+                        'compare' => 'LIKE'
+                    ]
                 ]
             ]
         ];
@@ -211,7 +219,7 @@ class Beneficios_Assets
         endif;
 
         $html .= ' <div class="btns-container d-flex justify-content-between align-items-center">';
-        if ($logged == 1 && $status == 'active' && $rol == get_option('subscription_digital_role') || $rol == 'administrator') :
+        if ($logged == 1 && $status == 'active' && ($rol == get_option('subscription_digital_role') || $rol == 'administrator')) :
             $html .= '<div class="request">';
             $disabled = get_post_meta($id, '_beneficio_date', true) ? 'disabled' : '';
             $text = beneficios_front()->get_beneficio_by_user($userid, $id) ? __('Solicitado', 'beneficios') : __('Solicitar', 'beneficios');
@@ -261,7 +269,7 @@ class Beneficios_Assets
                 </div>
             </div>
             <div class="description mt-3">
-                ' . get_the_content($id) . '
+                ' . get_post_field('post_content', $id) . '
             </div>
         </div>';
         $html .= '</div>';
